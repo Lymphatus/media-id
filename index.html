@@ -38,7 +38,7 @@
     function getId() {
         $.ajax({
             type: 'GET',
-            url: 'http://api.instagram.com/oembed?callback=&url=' + $('#url').val().trim(), //You must define 'Url' for yourself
+            url: 'https://api.instagram.com/oembed?callback=&url=' + $('#url').val().trim(), //You must define 'Url' for yourself
             cache: false,
             dataType: 'json',
             jsonp: false,
