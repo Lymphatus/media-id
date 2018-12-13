@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instagram Media ID</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3 has-text-centered">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input" type="text" placeholder="Instagram URL" id="url">
+                    </div>
+                    <div class="control">
+                        <a class="button is-info" onclick="getId();">
+                            Trova
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="subtitle has-text-centered">Media ID</h2>
+        <h1 class="title has-text-centered" id="media-id"></h1>
+
+    </div>
+</section>
+
+<script>
+    function getId() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://api.instagram.com/oembed?callback=&url=' + $('#url').val().trim(), //You must define 'Url' for yourself
+            cache: false,
+            dataType: 'json',
+            jsonp: false,
+            success: function (data) {
+                $('#media-id').html(data.media_id);
+            }
+        });
+
+    }
+</script>
+</body>
+</html>
